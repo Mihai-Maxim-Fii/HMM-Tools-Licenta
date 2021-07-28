@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.SetObservationNameController"
+            prefWidth="150.0">
+    <center>
+        <VBox fx:id="mainVbox" BorderPane.alignment="CENTER">
+            <children>
+                <HBox>
+                    <children>
+                        <Label text="Name: ">
+                            <HBox.margin>
+                                <Insets top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="observationNameChoice" prefWidth="80.0">
+                            <HBox.margin>
+                                <Insets top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <Button fx:id="setObservationNameButton" mnemonicParsing="false" onMouseClicked="#setObservationName" prefWidth="55.0" text="Set">
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="cancelObservationNameButton" mnemonicParsing="false" onMouseClicked="#cancelSetStateNameProbability" prefWidth="55.0" text="Cancel">
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>

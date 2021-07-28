@@ -1,0 +1,1 @@
+java -jar Licenta4.jar

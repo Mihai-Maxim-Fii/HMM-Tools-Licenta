@@ -1,0 +1,45 @@
+.buttonstyle{
+	-fx-font-size:20px;
+	-fx-border-radius: 30px;
+	-fx-text-color:red;
+	
+	
+}
+
+.labelstuff{
+	-fx-font-size: 50px;
+}
+
+
+.mainPanelStyle
+ {
+    -fx-background-color: white;
+ }
+
+
+ .simulatorPanelStyle
+ {
+    -fx-background-color: white;
+    -fx-color: white;
+ }
+
+.borderRegion
+{
+   -fx-background-color: white;
+}
+
+.txt{
+  -fx-text-align: center;
+  -fx-font-color:red;
+  -fx-align:center;
+}
+
+.test{
+-fx-focus-color: #808080;
+-fx-faint-focus-color:transparent;
+}
+.mainScrollPane
+{
+ -fx-faint-focus-color:transparent;
+ -fx-focus-color: transparent;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TableViewController">
+   <content>
+      <VBox>
+         <children>
+            <TextArea fx:id="textBox" minHeight="${scrollPane.height}" minWidth="${scrollPane.width}" style="-fx-font-family: &quot;monospaced&quot;; -fx-font-size: 20;" />
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

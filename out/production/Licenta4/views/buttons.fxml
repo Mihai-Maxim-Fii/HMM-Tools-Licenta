@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+   <top>
+      <VBox fx:id="topData" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                     <items>
+                        <Menu mnemonicParsing="false" text="New">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#resetBoard" text="Drawing board" />
+                              <MenuItem mnemonicParsing="false" onAction="#openProbabilityMatrix" text="Chain from probability matrix" />
+                          </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#openProject" text="Open Project" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveProject" text="Save Project" />
+                        <MenuItem mnemonicParsing="false" onAction="#quitProgram" text="Exit" />
+                     </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Zoom">
+                  <items>
+                        <CheckMenuItem fx:id="v50" mnemonicParsing="false" onAction="#view50" text="50%" />
+                        <CheckMenuItem fx:id="v75" mnemonicParsing="false" onAction="#view75" text="75%" />
+                        <CheckMenuItem fx:id="v100" mnemonicParsing="false" onAction="#view100" selected="true" text="100%" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Size">
+                     <items>
+                        <Menu mnemonicParsing="false" text="State/Observation size">
+                          <items>
+                              <CheckMenuItem fx:id="soSm" mnemonicParsing="false" onAction="#soSmall" selected="true" text="Small" />
+                              <CheckMenuItem fx:id="soMe" mnemonicParsing="false" onAction="#soMedium" text="Medium" />
+                              <CheckMenuItem fx:id="soBi" mnemonicParsing="false" onAction="#soBig" text="Big" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Line size">
+                           <items>
+                              <CheckMenuItem fx:id="lSm" mnemonicParsing="false" onAction="#lSmall" selected="true" text="Small" />
+                              <CheckMenuItem fx:id="lMe" mnemonicParsing="false" onAction="#lMedium" text="Medium" />
+                              <CheckMenuItem fx:id="lBi" mnemonicParsing="false" onAction="#lBig" text="Big" />
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#openDrawingFeatures" text="Drawing features" />
+                        <MenuItem mnemonicParsing="false" onAction="#openSimulatorFeatures" text="Simulator features" />
+                        <MenuItem mnemonicParsing="false" onAction="#openOtherFeatures" text="Other features" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+               <items>
+                  <Button mnemonicParsing="false" onMouseClicked="#chooseState" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="stateView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#chooseState" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#chooseObservation" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="observationView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#chooseState" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/square.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxHeight="0.0" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#chooseTransition" prefHeight="38.4" prefWidth="46.4" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="transitionView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#chooseTransition" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxHeight="0.0" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#circularTransition" prefHeight="38.4" prefWidth="46.4" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="transitionView1" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#circularTransition" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/circularArrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxHeight="0.0" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#chooseSelection" prefHeight="38.4" prefWidth="46.4" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="selectionCursorView" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#chooseSelection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cursor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxHeight="0.0" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#enableMultipleSelect" prefHeight="38.4" prefWidth="46.4" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="multipleSelectView" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#enableMultipleSelect" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/multipleSelect.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxHeight="0.0" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#RemoveCurrentlySelectedStates" prefHeight="38.4" prefWidth="46.4" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="selectionCursor1" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#RemoveCurrentlySelectedStates" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxHeight="0.0" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#expandPane" prefHeight="38.4" prefWidth="46.4" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                     <graphic>
+                        <ImageView fx:id="outwardArrow" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#expandPane" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/outwardArrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </items>
+            </ToolBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <Pane fx:id="fatherPane" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane fx:id="mainScrollPane" hbarPolicy="ALWAYS" minHeight="${fatherPane.height}" minWidth="${fatherPane.width}" onMouseClicked="#scrollPaneClick" prefHeight="327.0" prefWidth="600.0" styleClass="mainScrollPane" stylesheets="@../stylesheets/MyStyle.css" vbarPolicy="ALWAYS">
+                     <content>
+                        <Pane fx:id="mainDrawingPane" minHeight="${fatherPane.height}" minWidth="${fatherPane.width}" onMouseClicked="#drawShape" styleClass="mainPanelStyle" stylesheets="@../stylesheets/MyStyle.css" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

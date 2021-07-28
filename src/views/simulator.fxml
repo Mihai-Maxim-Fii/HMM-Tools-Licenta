@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SimulatorController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#getModelData" text="Get model data" />
+                        <MenuItem mnemonicParsing="false" onAction="#takeSnapshot" text="Take snapshot" />
+                        <MenuItem mnemonicParsing="false" onAction="#quitSimulator" text="Exit simulator" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Zoom">
+                  <items>
+                        <CheckMenuItem fx:id="v50" mnemonicParsing="false" onAction="#view50" text="50%" />
+                        <CheckMenuItem fx:id="v75" mnemonicParsing="false" onAction="#view75" text="75%" />
+                        <CheckMenuItem fx:id="v100" mnemonicParsing="false" onAction="#view100" selected="true" text="100%" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Algorithms">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#showStationaryDistribution" text="Find stationary distributions" />
+                        <MenuItem fx:id="stateSequenceItem" mnemonicParsing="false" onAction="#initStateSequenceProbability" text="Find state sequence probability" />
+                        <MenuItem fx:id="estimationItem" mnemonicParsing="false" onAction="#initEstimation" text="Forward algorithm" />
+                        <MenuItem fx:id="backwardItem" mnemonicParsing="false" onAction="#initBackward" text="Backward algorithm" />
+                        <MenuItem fx:id="softItem" mnemonicParsing="false" onAction="#initForwardBackward" text="Forward-Backward algorithm" />
+                    <MenuItem fx:id="decodingItem" mnemonicParsing="false" onAction="#initViterbyQuery" text="Viterbi algorithm" />
+                        <MenuItem fx:id="trainingItem" mnemonicParsing="false" onAction="#initTraining" text="Baum-Welch algorithm" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Numbers">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#shortenNumbers" text="Shorten" />
+                        <MenuItem mnemonicParsing="false" onAction="#expandNumbers" text="Expand" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+               <items>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#decrementStepCount" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0">
+                                 <image>
+                                    <Image url="@../images/backward.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Separator orientation="VERTICAL" prefHeight="0.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <Button mnemonicParsing="false" onAction="#resetModel" prefHeight="38.4" prefWidth="38.4" style="-fx-background-radius: 5em;" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                           <graphic>
+                              <Label fx:id="stepCounter" text="0" />
+                           </graphic>
+                        </Button>
+                        <Separator orientation="VERTICAL" prefHeight="0.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <Button mnemonicParsing="false" onAction="#stepForward" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0">
+                                 <image>
+                                    <Image url="@../images/forward.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Separator orientation="VERTICAL">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <Button mnemonicParsing="false" onMouseClicked="#enableSimulatorSelectionMode" prefHeight="38.4" prefWidth="46.4" styleClass="test" stylesheets="@../stylesheets/MyStyle.css">
+                           <HBox.margin>
+                              <Insets left="50.0" right="50.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fx:id="selectionCursorView" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/cursor.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Separator fx:id="separator" orientation="VERTICAL" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="trainButton" mnemonicParsing="false" onAction="#startTraining" styleClass="test" stylesheets="@../stylesheets/MyStyle.css" text="Train" />
+                  <Label fx:id="roundsCounter" />
+               </items>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ToolBar>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="2.0" />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <ScrollPane fx:id="simulatorScrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background: white;" styleClass="simulatorPanelStyle" stylesheets="@../stylesheets/MyStyle.css" BorderPane.alignment="CENTER">
+         <content>
+            <Pane fx:id="simulatorMainDrawingPane" minHeight="${simulatorScrollPane.height}" minWidth="${simulatorScrollPane.width}" styleClass="simulatorPanelStyle" stylesheets="@../stylesheets/MyStyle.css" />
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
